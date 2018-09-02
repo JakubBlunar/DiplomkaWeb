@@ -1,0 +1,54 @@
+{
+    "extends": [
+        "airbnb-base"
+    ],
+    "globals": {
+        "F": true,
+        "U": true,
+        "ErrorBuilder": true,
+        "DATABASE": true,
+        "MODEL": true,
+        "CONFIG": true,
+        "DEBUG": true,
+        "RELEASE": true,
+        "RESOURCE": true,
+        "GETSCHEMA": true,
+        "NEWSCHEMA": true,
+        "$": true,
+        "moment": true,
+        "ROUTE": true,
+        "$ASYNC": true,
+        "DB": true,
+        "INCLUDE": true,
+        "Pagination": true,
+        "Mail": true,
+        "Utils": true,
+        "NOSQL": true,
+        "SUCCESS": true,
+        "MODULE": true,
+        "Controller": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "jsx": false
+        }
+    },
+    "rules": {
+        "semi": 0,
+        "no-use-before-define": 0,
+        "indent": [2, 4, {
+            "SwitchCase": 1
+        }],
+        "comma-dangle": ["error", "never"],
+        "arrow-body-style": "warn",
+        "newline-per-chained-call": "warn",
+        "no-case-declarations": "off",
+        "func-names": "off",
+        "prefer-arrow-callback": "off",
+        "max-len": ["error", {
+            "ignoreComments": true,
+            "code": 200
+        }]
+    }
+}

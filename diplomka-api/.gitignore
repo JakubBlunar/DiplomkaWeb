@@ -1,0 +1,12 @@
+.vscode
+.DS_Store
+NOTES.md
+node_modules
+node_modules/*
+!node_modules/sqlagent/*
+tmp
+*.pid
+.idea/*
+logs
+workers/events/*
+.jshintrc

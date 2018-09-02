@@ -1,0 +1,5 @@
+homepage                        : @(Homepage)                   --> @(/en/)
+
+//account
+account-sign-up                 : @(Sign up)                    --> @(/en/sign-up)          --> homepage
+account-sign-up-complete        : @(Sign up complete)           --> @(/en/sign-up/complete) --> homepage
