@@ -11,10 +11,12 @@ import {
 } from 'redux-form'
 
 import authReducer from './auth'
+import charactersReducer from './characters'
 
 export const REDUCER_KEYS = {
 	FORM: 'form',
-	AUTH: 'auth'
+	AUTH: 'auth',
+	CHARACTERS: 'characters'
 }
 
 const rootReducer = combineReducers({
@@ -25,7 +27,11 @@ const rootReducer = combineReducers({
 	auth: persistReducer({
 		key: REDUCER_KEYS.AUTH,
 		storage: storageLocal
-	}, authReducer)
+	}, authReducer),
+	characters: persistReducer({
+		key: REDUCER_KEYS.CHARACTERS,
+		storage: storageSession
+	}, charactersReducer)
 })
 
 export default rootReducer

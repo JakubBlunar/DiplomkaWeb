@@ -10,13 +10,12 @@ class RegistrationCompletePage extends React.Component {
 
 	render = () => {
 		return (
-			<div className="page-container">
+			<div className="page-container registration-complete">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-3"></div>
 						<div className="col-lg-6 intro">
-							<h2>Welcome {get(this.props, 'auth.user.name', '-')} !</h2>
-
+							<h2>Welcome {get(this.props, 'auth.user.name', '-')}!</h2>
 							Your registration was successfull...
 						</div>
 					</div>

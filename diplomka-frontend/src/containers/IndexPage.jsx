@@ -1,10 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { REGISTRATION, LOGIN } from '../utils/routes'
+import PropTypes from 'prop-types'
+
+import { REGISTRATION, LOGIN, ACCOUNT_INDEX } from '../utils/routes'
 
 class IndexComponent extends React.Component {
+	static propTypes = {
+		auth: PropTypes.shape({
+			user: PropTypes.shape()
+		}).isRequired
+	}
 
 	render = () => {
+		const { user } = this.props.auth
+
 		return (
 			<div className="page-container index-page">
 				<div className="container">
@@ -18,7 +28,7 @@ class IndexComponent extends React.Component {
 							<h1>Akalitasia</h1>
 						</div>
 					</div>
-					<div className="row join">
+					{!user && <div className="row join">
 						<div className="col-lg-5">
 							<Link to={REGISTRATION}>
 								<button className="full-width" data-color="white">
@@ -36,7 +46,21 @@ class IndexComponent extends React.Component {
 								</button>
 							</Link>
 						</div>
-					</div>
+					</div>}
+
+					{user && <div className="row join">
+						<div className="col-lg-4">
+
+						</div>
+						<div className="col-lg-4">
+							<Link to={ACCOUNT_INDEX}>
+								<button className="full-width" data-color="white">
+									My Account
+								</button>
+							</Link>
+						</div>
+					</div>}
+
 				</div>
 			</div>
 		)
@@ -44,4 +68,8 @@ class IndexComponent extends React.Component {
 
 }
 
-export default IndexComponent
+const mapStateToProps = state => ({
+	auth: state.auth
+})
+
+export default connect(mapStateToProps)(IndexComponent)
