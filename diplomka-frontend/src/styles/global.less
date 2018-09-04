@@ -1,5 +1,5 @@
 @backgroundColor: #525564;
-@darkOrange: #C25B56;
+@darkOrange: rgb(194,91,86);
 @textColor: #FEF6EB;
 @lightBlue: #96C0CE;
 
@@ -43,7 +43,7 @@ body, html, #root {
   padding: 0;
   //font-family: 'Open Sans', sans-serif;
   font-family: 'VT323', monospace;
-  font-size: 16px;
+  font-size: 20px;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -275,6 +275,7 @@ input[type="password"] {
 }
 
 label {
+	display: block;
 	color: @textColor;
 	font-size: 25px;
 	font-weight: normal;
@@ -302,6 +303,31 @@ label {
 }
 
 .input-wrapper {
+	display: block;
+	height: auto;
+
+	&.select-wrapper {
+		margin-bottom: 45px;
+		label {
+			color: @textColor;
+			font-size: 25px;
+			font-weight: normal;
+			position: relative;
+			pointer-events: none;
+			left: 5px;
+			top: 0px;
+			margin-bottom: 10px;
+			transition: 300ms ease all;
+		}
+
+		.react-select__control {
+			cursor: pointer;
+		}
+		.react-select__control:focus {
+			border: 2px solid @darkOrange;
+		}
+	}
+
 	&.has-error{
 		label, input {
 			color: @darkOrange;
@@ -603,4 +629,28 @@ button {
 		}
 	}
 
+	.characters-after {
+		margin: 20px auto;
+    	font-size: 20px;
+	}
+
+}
+
+.character-select-option {
+	margin: 0;
+	width: 100%;
+	padding: 20px;
+	color: black;
+	font-size: 1em;
+	cursor: pointer;
+
+	&.selected {
+		background: @darkOrange;
+		color: @textColor;
+	}
+
+	&.focused {
+		background: rgba(194,91,86, 0.7);
+	}
+	
 }

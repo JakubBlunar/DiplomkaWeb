@@ -19,7 +19,8 @@ import {
 	INDEX,
 	REGISTRATION,
 	ACCOUNT_INDEX,
-	REGISTRATION_COMPLETE
+	REGISTRATION_COMPLETE,
+	CHARACTER_CREATE
 } from '../../utils/routes'
 import { has } from 'lodash'
 
@@ -30,6 +31,7 @@ import Menu from '../Menu'
 import AccountIndexPage from '../../containers/AccountIndexPage'
 import * as AuthActions from '../../actions/auth'
 import RegistrationCompletePage from '../../containers/RegistrationCompletePage'
+import CreateCharacterPage from '../../containers/CreateCharacterPage'
 
 class Routes extends Component {
 	static propTypes = {
@@ -125,6 +127,7 @@ class Routes extends Component {
 							<Route exact path={LOGIN} component={LoginPage} />
 							<AuthRequiredRoute exact path={REGISTRATION_COMPLETE} component={RegistrationCompletePage} />
 							<AuthRequiredRoute exact path={ACCOUNT_INDEX} component={AccountIndexPage} />
+							<AuthRequiredRoute exact path={CHARACTER_CREATE} component={CreateCharacterPage} />
 							<Route render={() => <div>Not Found</div>} />
 						</Switch>
 					</CSSTransition>

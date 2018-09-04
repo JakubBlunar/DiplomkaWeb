@@ -7,6 +7,7 @@ export const REGISTRATION = '/registration'
 export const LOGIN = '/sign-in'
 export const ACCOUNT_INDEX = '/account'
 export const REGISTRATION_COMPLETE = '/registration-complete'
+export const CHARACTER_CREATE = '/account/character/create'
 
 function insertIntoStirng(string, index, substring) {
 	return [string.slice(0, index), substring, string.slice(index)].join('')
