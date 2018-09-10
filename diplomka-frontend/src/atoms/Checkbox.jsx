@@ -13,15 +13,18 @@ const Checkbox = ({
 		<div className={cx('input-wrapper', { 'has-error': touched && error })}>
 			<div className="group checkbox">
 				<label>
-					{label}
-					<input
-						{...input}
-						{...rest}
-						defaultChecked={!!value}
-						onChange={(e) => { onChange(!value) }}
-						type="checkbox"
-					/>
-					<span className="checkmark"></span>
+					<p>
+						<span>{label}</span>
+			
+						<input
+							{...input}
+							{...rest}
+							defaultChecked={!!value}
+							onChange={(e) => { onChange(!value) }}
+							type="checkbox"
+						/>
+						<span className="checkmark"></span>
+					</p>
 				</label>
 				<div className="text-danger">
 					{touched ? error : ''}

@@ -351,6 +351,10 @@ label {
 			pointer-events: initial;
 			position: relative;
 			cursor: pointer;
+
+			span:first {
+				width: auto
+			}
 		}
 
 		/* Hide the browser's default checkbox */
@@ -359,16 +363,16 @@ label {
 		}
 
 		.checkmark {
-			display: block;
-			position: absolute;
-			top: 0;
-			left: calc(100% + 15px);
+			display: inline-block;
 			height: 25px;
 			width: 25px;
 			background-color: @textColor;
 			border: 2px solid @textColor;
 			border-radius: 3px;
-
+			position: relative;
+			top: 5px;
+			left: 5px;
+			
 			&:after {
 				content: "";
 				position: absolute;
@@ -385,11 +389,12 @@ label {
 		}
 
 		/* Show the checkmark when checked */
-		& input:checked ~ .checkmark:after {
+		& p input:checked ~ .checkmark:after {
 			display: block;
 		}
 
 		& .checkmark:after {
+			position: relative;
 			left: 9px;
     		top: 5px;
 			width: 5px;

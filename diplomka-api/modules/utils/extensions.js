@@ -10,7 +10,9 @@ U.prepareException = (exception) => {
             errors: e.items
         };
     }
-    return { errors: [] };
+    return {
+        errors: []
+    };
 };
 
 U.hashPassword = (password, salt, callback) => {
@@ -80,12 +82,19 @@ U.log = () => {
     console.log(log);
 };
 
-U.generateConfirmationToken = user =>
+U.generateConfirmationToken = account =>
     U.encryptToken({
-        uid: user.id,
-        val: U.hashEmail(user.email),
+        uid: account.id,
+        val: U.hashEmail(account.email),
         action: 'CONFIRM_EMAIL'
     }, 5184000);
+
+U.generateResetPasswordToken = account =>
+    U.encryptToken({
+        aid: account.id,
+        val: U.hashEmail(account.email),
+        action: 'RESET_PASSWORD'
+    }, 3600);
 
 U.toDebugStr = () => {
     let str = '';

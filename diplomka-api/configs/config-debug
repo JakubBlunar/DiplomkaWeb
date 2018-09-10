@@ -1,1 +1,3 @@
 db-debug-connection             : mysql://root:usbw@localhost:3306/world
+
+base-url                        : http://localhost

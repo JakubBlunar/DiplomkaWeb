@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import LoginForm from '../components/LoginForm'
-import { REGISTRATION } from '../utils/routes'
+import { REGISTRATION, FORGOT_PASSWORD } from '../utils/routes'
 
 class LoginPage extends React.Component {
 
@@ -24,7 +24,7 @@ class LoginPage extends React.Component {
 					<div className="row description">
 						<div className="col-lg-3 col-md-2"></div>
 						<div className="col-lg-6 col-md-8">
-							Forgot your password? Click here. {'If you don\'t have your account yet, don\'t hesitate and sign-up'} <Link to={REGISTRATION}>here</Link>.
+							Forgot your password? Click <Link to={FORGOT_PASSWORD}>here</Link>. {'If you don\'t have your account yet, don\'t hesitate and sign-up'} <Link to={REGISTRATION}>here</Link>.
 						</div>
 					</div>
 				</div>

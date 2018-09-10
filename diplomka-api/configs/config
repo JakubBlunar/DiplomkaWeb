@@ -1,4 +1,4 @@
-name                            : Diplomka
+name                            : Akalitasia
 author                          : Jakub Blunár
 version                         : 1.0.0
 secret                          : 2acdadf123272ccf1e1bfd435d126a406f6d886f
@@ -7,7 +7,7 @@ cookie                          : __user
 
 // Mail settings
 mail-smtp                       : smtp.gmail.com
-mail-smtp-options               : { "secure": true, "port": 465, "user": "blogkubikovo@gmail.com", "password": "", "timeout": 10000 }
+mail-smtp-options               : { "secure": true, "port": 465, "timeout": 10000 }
 mail-address-from               : blogkubikovo@gmail.com
 mail-address-reply              : blogkubikovo@gmail.com
 
