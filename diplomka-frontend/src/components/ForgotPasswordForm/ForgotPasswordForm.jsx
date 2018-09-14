@@ -27,7 +27,7 @@ class ForgotPasswordForm extends React.Component {
 	onSubmit = (values) => {
 		console.log(values)
 		this.setState({ isLoading: true })
-		this.props.accountActions.requestPasswordRecovery(values, (err) => {
+		AccountActions.requestPasswordRecovery(values, (err) => {
 			if (err) {
 				return this.setState({ isLoading: false, done: false })
 			}
@@ -80,8 +80,4 @@ const form = reduxForm({
 	validate: validate
 })(ForgotPasswordForm)
 
-const mapDispatchToProps = dispatch => ({
-	accountActions: bindActionCreators(AccountActions, dispatch)
-})
-
-export default connect(null, mapDispatchToProps)(form)
+export default connect(null)(form)

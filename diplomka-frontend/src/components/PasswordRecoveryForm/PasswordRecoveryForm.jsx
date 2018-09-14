@@ -40,9 +40,9 @@ class PasswordRecoveryForm extends React.Component {
 	onSubmit = (values) => {
 		console.log(values)
 		const { token } = queryString.parse(this.props.location.search)
-		
+
 		this.setState({ isLoading: true })
-		this.props.accountActions.recoveryPassword({ ...values, token }, (err) => {
+		AccountActions.recoveryPassword({ ...values, token }, (err) => {
 			this.setState({ isLoading: false }, () => {
 				if (!err) {
 					history.push(LOGIN)
@@ -100,8 +100,4 @@ const mapStateToProps = state => ({
 	auth: state.auth
 })
 
-const mapDispatchToProps = dispatch => ({
-	accountActions: bindActionCreators(AccountActions, dispatch)
-})
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(form))
+export default withRouter(connect(mapStateToProps)(form))

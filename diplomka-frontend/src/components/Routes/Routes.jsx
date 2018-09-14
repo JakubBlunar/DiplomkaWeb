@@ -35,7 +35,7 @@ import * as AuthActions from '../../actions/auth'
 import RegistrationCompletePage from '../../containers/RegistrationCompletePage'
 import CreateCharacterPage from '../../containers/CreateCharacterPage'
 import ForgotPasswordPage from '../../containers/ForgotPasswordPage'
-import ResetPasswordPage from '../../containers/ResetPasswordPage';
+import ResetPasswordPage from '../../containers/ResetPasswordPage'
 
 class Routes extends Component {
 	static propTypes = {

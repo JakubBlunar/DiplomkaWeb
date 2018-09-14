@@ -20,7 +20,7 @@ const Checkbox = ({
 							{...input}
 							{...rest}
 							defaultChecked={!!value}
-							onChange={(e) => { onChange(!value) }}
+							onChange={() => { onChange(!value) }}
 							type="checkbox"
 						/>
 						<span className="checkmark"></span>
