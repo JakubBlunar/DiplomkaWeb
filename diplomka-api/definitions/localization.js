@@ -29,8 +29,8 @@ F.onLocale = (req, res) => {
     language = req.language
 
     if (language.indexOf('sk') > -1) {
-        return 'sk';
+        return 'sk'
     }
 
-    return 'en';
-};
+    return 'en'
+}

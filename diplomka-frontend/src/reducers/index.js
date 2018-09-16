@@ -12,11 +12,15 @@ import {
 
 import authReducer from './auth'
 import charactersReducer from './characters'
+import onlinePlayersReducer from './onlinePlayers'
+import realmStatusReducer from './realmStatus'
 
 export const REDUCER_KEYS = {
 	FORM: 'form',
 	AUTH: 'auth',
-	CHARACTERS: 'characters'
+	CHARACTERS: 'characters',
+	ONLINE_PLAYERS: 'onlinePlayers',
+	REALM_STATUS: 'realmStatus'
 }
 
 const rootReducer = combineReducers({
@@ -31,7 +35,15 @@ const rootReducer = combineReducers({
 	characters: persistReducer({
 		key: REDUCER_KEYS.CHARACTERS,
 		storage: storageSession
-	}, charactersReducer)
+	}, charactersReducer),
+	onlinePlayers: persistReducer({
+		key: REDUCER_KEYS.ONLINE_PLAYERS,
+		storage: storageSession
+	}, onlinePlayersReducer),
+	realmStatus: persistReducer({
+		key: REDUCER_KEYS.REALM_STATUS,
+		storage: storageSession
+	}, realmStatusReducer)
 })
 
 export default rootReducer

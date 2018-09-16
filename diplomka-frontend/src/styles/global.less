@@ -469,6 +469,35 @@ label {
 	}
 }
 
+.online-players-page {
+	background: @backgroundColor;
+	h1 {
+		.stroke(2px, black, transparent);
+		text-align: center;
+		font-size: 60px;
+		font-weight: normal;
+	}
+
+	table {
+		width: 100%;
+		thead {
+			th {
+				font-size: 28px;
+				.stroke(1px, black, transparent);
+				color: @lightBlue;
+				font-weight: normal;
+			}
+		}
+		tr {
+			td {
+				font-size: 25px;
+				.stroke(1px, black, transparent);
+				color: white;
+			}
+		}
+	}
+}
+
 button {
 	background: transparent;
 	border-radius: 4px;
@@ -658,4 +687,27 @@ button {
 		background: rgba(194,91,86, 0.7);
 	}
 	
+}
+
+.pagination {
+	display: block;
+	list-style-type: none;
+	text-align: center;
+	margin: 10px auto;
+
+	li {
+		display: inline-block;
+		
+		a {
+			padding: 5px;
+			font-size: 25px;
+			cursor: pointer;
+		}
+
+		&.selected {
+			a {
+				color: @darkOrange;
+			}	
+		}
+	}
 }

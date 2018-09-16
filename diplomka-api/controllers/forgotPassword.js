@@ -90,10 +90,10 @@ function sendForgotPasswordEmail(controller, account) {
                 url: `${CONFIG('base-url')}/reset-password?token=${U.generateResetPasswordToken(account)}`
             },
             footer: `This email was attended for ${account.email}`
-        }));
+        }))
 
-        email.from(CONFIG('mail-address-from'), CONFIG('name'));
-        email.to(account.email);
+        email.from(CONFIG('mail-address-from'), CONFIG('name'))
+        email.to(account.email)
 
         const smtpOptions = {
             ...CONFIG('mail-smtp-options'),
@@ -103,9 +103,9 @@ function sendForgotPasswordEmail(controller, account) {
 
         email.send(CONFIG('mail-smtp'), smtpOptions, function (err) {
             if (err) {
-                return reject(err);
+                return reject(err)
             }
-            return resolve(account);
-        });
-    });
+            return resolve(account)
+        })
+    })
 }

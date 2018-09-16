@@ -30,7 +30,7 @@ function ajaxGetCharacters() {
 }
 
 function ajaxCreateCharacter() {
-    const self = this;
+    const self = this
 
     const model = self.body.$clean()
 

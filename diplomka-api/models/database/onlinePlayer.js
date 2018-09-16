@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 
 const OnlinePlayer = DATABASE().define('onlinePlayer', {
     id: {
@@ -6,9 +6,9 @@ const OnlinePlayer = DATABASE().define('onlinePlayer', {
         autoIncrement: false,
         primaryKey: true
     }
-});
+})
 
-exports.instance = OnlinePlayer;
+exports.instance = OnlinePlayer
 
 exports.init = function (callback) {
     OnlinePlayer.belongsTo(MODEL('database/account').instance, {
@@ -25,5 +25,5 @@ exports.init = function (callback) {
         },
         onDelete: 'NO ACTION'
     })
-    return callback();
-};
+    return callback()
+}

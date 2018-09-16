@@ -8,7 +8,7 @@ import cx from 'classnames'
 import menuIconWhite from '../resources/img/menu-white.svg'
 
 import * as AuthActions from '../actions/auth'
-import { INDEX, REGISTRATION, LOGIN, ACCOUNT_INDEX } from '../utils/routes'
+import { INDEX, REGISTRATION, LOGIN, ACCOUNT_INDEX, ONLINE_PLAYERS } from '../utils/routes'
 
 class Menu extends Component {
 	static propTypes = {
@@ -64,6 +64,14 @@ class Menu extends Component {
 											</button>
 										</Link>
 									</li>}
+
+									<li>
+										<Link to={ONLINE_PLAYERS} onClick={() => this.props.setMenuVisibility(false)}>
+											<button className="full-width" data-color="orange">
+												Online players and Server status
+											</button>
+										</Link>
+									</li>
 
 								</ul>
 							</div>

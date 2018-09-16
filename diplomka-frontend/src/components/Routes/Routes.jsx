@@ -22,7 +22,8 @@ import {
 	REGISTRATION_COMPLETE,
 	CHARACTER_CREATE,
 	FORGOT_PASSWORD,
-	RESET_PASSWORD
+	RESET_PASSWORD,
+	ONLINE_PLAYERS
 } from '../../utils/routes'
 import { has } from 'lodash'
 
@@ -36,6 +37,7 @@ import RegistrationCompletePage from '../../containers/RegistrationCompletePage'
 import CreateCharacterPage from '../../containers/CreateCharacterPage'
 import ForgotPasswordPage from '../../containers/ForgotPasswordPage'
 import ResetPasswordPage from '../../containers/ResetPasswordPage'
+import OnlinePlayersPage from '../../containers/OnlinePlayersPage'
 
 class Routes extends Component {
 	static propTypes = {
@@ -131,6 +133,7 @@ class Routes extends Component {
 							<Route exact path={LOGIN} component={LoginPage} />
 							<Route exact path={FORGOT_PASSWORD} component={ForgotPasswordPage} />
 							<Route exact path={RESET_PASSWORD} component={ResetPasswordPage} />
+							<Route exact path={ONLINE_PLAYERS} component={OnlinePlayersPage} />
 							<AuthRequiredRoute exact path={REGISTRATION_COMPLETE} component={RegistrationCompletePage} />
 							<AuthRequiredRoute exact path={ACCOUNT_INDEX} component={AccountIndexPage} />
 							<AuthRequiredRoute exact path={CHARACTER_CREATE} component={CreateCharacterPage} />

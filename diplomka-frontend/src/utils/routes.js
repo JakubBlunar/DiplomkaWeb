@@ -10,6 +10,7 @@ export const REGISTRATION_COMPLETE = '/registration-complete'
 export const CHARACTER_CREATE = '/account/character/create'
 export const FORGOT_PASSWORD = '/forgot-password'
 export const RESET_PASSWORD = '/reset-password'
+export const ONLINE_PLAYERS = '/online-players'
 
 function insertIntoStirng(string, index, substring) {
 	return [string.slice(0, index), substring, string.slice(index)].join('')

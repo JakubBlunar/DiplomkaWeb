@@ -11,5 +11,5 @@ NEWSCHEMA('CharacterCreate').make((schema) => {
             default:
                 return value
         }
-    });
-});
+    })
+})

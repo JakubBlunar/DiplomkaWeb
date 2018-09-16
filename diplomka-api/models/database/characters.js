@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 
 const Character = DATABASE().define('character', {
     name: Sequelize.TEXT,
@@ -7,9 +7,9 @@ const Character = DATABASE().define('character', {
     mapId: Sequelize.INTEGER,
     positionX: Sequelize.INTEGER,
     positionY: Sequelize.INTEGER
-});
+})
 
-exports.instance = Character;
+exports.instance = Character
 
 exports.init = function (callback) {
     Character.belongsTo(MODEL('database/account').instance, {
@@ -20,5 +20,5 @@ exports.init = function (callback) {
         onDelete: 'NO ACTION'
     })
 
-    return callback();
-};
+    return callback()
+}

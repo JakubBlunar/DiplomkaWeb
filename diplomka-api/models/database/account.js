@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 
 const Account = DATABASE().define('account', {
     login: Sequelize.TEXT,
@@ -14,9 +14,9 @@ const Account = DATABASE().define('account', {
         allowNull: false,
         defaultValue: false
     }
-});
+})
 
-exports.instance = Account;
+exports.instance = Account
 
 exports.init = function (callback) {
     Account.hasMany(MODEL('database/characters').instance, {
@@ -26,5 +26,5 @@ exports.init = function (callback) {
         },
         onDelete: 'NO ACTION'
     })
-    return callback();
-};
+    return callback()
+}
