@@ -7,10 +7,15 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 import ProgressBarPlugin from 'progress-bar-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import scannerWebpack from './tools/scannerWebpack'
+
+const ASSET_PATH = process.env.ASSET_PATH || '/'
 
 const GLOBALS = {
 	'process.env.NODE_ENV': JSON.stringify('production'),
-	__DEV__: false
+	__DEV__: false,
+	'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
 }
 
 export default {
@@ -23,7 +28,7 @@ export default {
 	target: 'web',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: '/',
+		publicPath: ASSET_PATH,
 		filename: '[name].[chunkhash].js'
 	},
 	optimization: {
@@ -48,11 +53,15 @@ export default {
 					compress: true,
 					output: {
 						comments: false
-					} 
+					}
 				}
 			}),
 			new OptimizeCSSAssetsPlugin({
-				cssProcessorOptions: { discardComments: { removeAll: true } },
+				cssProcessorOptions: {
+					discardComments: {
+						removeAll: true
+					}
+				},
 			})
 		]
 	},
@@ -86,8 +95,15 @@ export default {
 			// To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
 			trackJSToken: ''
 		}),
-		
+
 		new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /sk/),
+
+		new scannerWebpack(),
+
+		new CopyWebpackPlugin([{
+			from: 'assets',
+			to: 'assets'
+		}]),
 
 		new ProgressBarPlugin(),
 	],
@@ -146,7 +162,7 @@ export default {
 			test: /(\.css|\.less)$/,
 			use: [
 				MiniCssExtractPlugin.loader,
-				'css-loader', 
+				'css-loader',
 				{
 					loader: 'postcss-loader',
 					options: {
@@ -154,7 +170,7 @@ export default {
 							require('autoprefixer')
 						],
 					}
-				}, 
+				},
 				{
 					loader: 'less-loader'
 				}

@@ -44,12 +44,16 @@ browserSync({
 				// for other settings see
 				// https://webpack.js.org/guides/development/#using-webpack-dev-middleware
 			}),
-			
+
 			// bundler should be the same as above
 			webpackHotMiddleware(bundler)
 		]
 	},
-	notify:false,
+	serveStatic: [{
+		route: '/assets',
+		dir: 'assets'
+	}],
+	notify: false,
 	// no need to watch '*.js' here, webpack will take care of it for us,
 	// including full page reloads if HMR won't work
 	files: [
