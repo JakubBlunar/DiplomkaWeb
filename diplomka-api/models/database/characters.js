@@ -20,5 +20,12 @@ exports.init = function (callback) {
         onDelete: 'NO ACTION'
     })
 
+    Character.hasOne(MODEL('database/characterAttributes').instance, {
+        foreignKey: {
+            name: 'characterId',
+            allowNull: false
+        },
+        onDelete: 'CASCADE'
+    })
     return callback()
 }
