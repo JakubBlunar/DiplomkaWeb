@@ -1,4 +1,6 @@
 const Character = MODEL('database/characters').instance
+const CharacterSpells = MODEL('database/characterSpells').instance
+const CharacterAttributes = MODEL('database/characterAttributes').instance
 
 exports.install = () => {
     ROUTE('/api/characters', ajaxGetCharacters, ['authorize', 'GET'])
@@ -47,6 +49,19 @@ function ajaxCreateCharacter() {
             model.positionX = 50
             model.positionY = 50
             model.accountId = self.user.id
+            model.character_spells = [{
+                spellType: 1
+            }]
+            model.character_attribute = {
+                agility: 5,
+                armor: 0,
+                experience: 0,
+                intelect: 5,
+                money: 5,
+                spirit: 5,
+                stamina: 5,
+                strength: 5
+            }
 
             return createCharacter(model, transaction)
         }).then(function (character) {
@@ -64,7 +79,12 @@ function getCharacters(query, transaction) {
     const options = {
         where: {
             ...query
-        }
+        },
+        include: [{
+            model: CharacterSpells
+        }, {
+            model: CharacterAttributes
+        }]
     }
 
     if (transaction) {
@@ -89,5 +109,8 @@ function getCharacter(query, transaction) {
 }
 
 function createCharacter(characterData, transaction) {
-    return Character.create(characterData, transaction)
+    return Character.create(characterData, {
+        include: [CharacterAttributes, CharacterSpells],
+        transaction
+    });
 }

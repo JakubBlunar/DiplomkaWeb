@@ -27,5 +27,13 @@ exports.init = function (callback) {
         },
         onDelete: 'CASCADE'
     })
+
+    Character.hasMany(MODEL('database/characterSpells').instance, {
+        foreignKey: {
+            name: 'characterId',
+            allowNull: false
+        },
+        onDelete: 'CASCADE'
+    })
     return callback()
 }
