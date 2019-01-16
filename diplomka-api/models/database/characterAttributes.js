@@ -8,7 +8,8 @@ const CharacterAttributes = DATABASE().define('character_attributes', {
     intelect: Sequelize.FLOAT,
     spirit: Sequelize.FLOAT,
     strength: Sequelize.FLOAT,
-    armor: Sequelize.FLOAT
+    armor: Sequelize.FLOAT,
+    freeAttributes: Sequelize.FLOAT
 })
 
 exports.instance = CharacterAttributes
