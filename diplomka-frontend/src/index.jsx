@@ -17,10 +17,7 @@ const { store, persistor } = configureStore()
 
 render(
 	<AppContainer>
-		<PersistGate
-			loading="Loading"
-			persistor={persistor}
-		>
+		<PersistGate loading="Loading" persistor={persistor}>
 			<Root store={store} history={history} />
 		</PersistGate>
 	</AppContainer>,

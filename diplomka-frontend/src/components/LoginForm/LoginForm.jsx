@@ -24,10 +24,9 @@ class LoginForm extends React.Component {
 		isLoading: false
 	}
 
-	onSubmit = (values) => {
-		console.log(values)
+	onSubmit = values => {
 		this.setState({ isLoading: true })
-		this.props.authActions.logInUser(values, (err) => {
+		this.props.authActions.logInUser(values, () => {
 			this.setState({ isLoading: false })
 		})
 	}
@@ -39,7 +38,11 @@ class LoginForm extends React.Component {
 			<form onSubmit={handleSubmit(this.onSubmit)}>
 				<div className="row">
 					<div className="col-12">
-						{isLoading && <div className="loading style-2"><div className="loading-wheel"></div></div>}
+						{isLoading && (
+							<div className="loading style-2">
+								<div className="loading-wheel" />
+							</div>
+						)}
 						<Field
 							name="login"
 							component={TextInputField}
@@ -55,21 +58,25 @@ class LoginForm extends React.Component {
 
 						<Checkbox name="remember" label="Remember login" />
 					</div>
-
 				</div>
 
 				<div className="row">
 					<div className="col-12">
-						<button className="full-width" type="submit" disabled={isLoading || invalid || pristine || submitting} data-color="white">
+						<button
+							className="full-width"
+							type="submit"
+							disabled={
+								isLoading || invalid || pristine || submitting
+							}
+							data-color="white"
+						>
 							Sign in
 						</button>
 					</div>
 				</div>
-
 			</form>
 		)
 	}
-
 }
 
 const form = reduxForm({
@@ -81,4 +88,7 @@ const mapDispatchToProps = dispatch => ({
 	authActions: bindActionCreators(AuthActions, dispatch)
 })
 
-export default connect(null, mapDispatchToProps)(form)
+export default connect(
+	null,
+	mapDispatchToProps
+)(form)

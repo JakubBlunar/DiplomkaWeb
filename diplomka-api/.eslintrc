@@ -1,7 +1,5 @@
 {
-    "extends": [
-        "airbnb-base"
-    ],
+    "extends": ["airbnb-base"],
     "globals": {
         "F": true,
         "U": true,
@@ -37,18 +35,27 @@
     "rules": {
         "semi": 0,
         "no-use-before-define": 0,
-        "indent": [2, 4, {
-            "SwitchCase": 1
-        }],
+        "indent": [
+            2,
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
         "comma-dangle": ["error", "never"],
-        "arrow-body-style": "warn",
         "newline-per-chained-call": "warn",
         "no-case-declarations": "off",
         "func-names": "off",
         "prefer-arrow-callback": "off",
-        "max-len": ["error", {
-            "ignoreComments": true,
-            "code": 200
-        }]
+        "max-len": [
+            "error",
+            {
+                "ignoreComments": true,
+                "code": 200
+            }
+        ],
+        "arrow-parens": "off",
+        "arrow-body-style": "off",
+        "space-before-function-paren": "off"
     }
 }

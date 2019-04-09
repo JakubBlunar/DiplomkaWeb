@@ -15,7 +15,8 @@ const ASSET_PATH = process.env.ASSET_PATH || '/'
 const GLOBALS = {
 	'process.env.NODE_ENV': JSON.stringify('production'),
 	__DEV__: false,
-	'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
+	'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
+	'process.env.BASE_URL': JSON.stringify('localhost:3000')
 }
 
 export default {
@@ -34,7 +35,7 @@ export default {
 	optimization: {
 		runtimeChunk: true,
 		splitChunks: {
-			chunks: "all",
+			chunks: 'all',
 			cacheGroups: {
 				styles: {
 					name: 'styles',
@@ -61,7 +62,7 @@ export default {
 					discardComments: {
 						removeAll: true
 					}
-				},
+				}
 			})
 		]
 	},
@@ -70,8 +71,8 @@ export default {
 		new webpack.DefinePlugin(GLOBALS),
 
 		new MiniCssExtractPlugin({
-			filename: "[name].[hash].css",
-			chunkFilename: "[id].[hash].css"
+			filename: '[name].[hash].css',
+			chunkFilename: '[id].[hash].css'
 		}),
 
 		// Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
@@ -100,81 +101,99 @@ export default {
 
 		new scannerWebpack(),
 
-		new CopyWebpackPlugin([{
-			from: 'assets',
-			to: 'assets'
-		}]),
+		new CopyWebpackPlugin([
+			{
+				from: 'assets',
+				to: 'assets'
+			}
+		]),
 
-		new ProgressBarPlugin(),
+		new ProgressBarPlugin()
 	],
 	module: {
-		rules: [{
-			test: /\.jsx?$/,
-			exclude: /node_modules/,
-			use: ['babel-loader']
-		}, {
-			test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-			use: [{
-				loader: 'url-loader',
-				options: {
-					name: '[name].[ext]'
-				}
-			}]
-		}, {
-			test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-			use: [{
-				loader: 'url-loader',
-				options: {
-					limit: 10000,
-					mimetype: 'application/font-woff',
-					name: '[name].[ext]'
-				}
-			}]
-		}, {
-			test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-			use: [{
-				loader: 'url-loader',
-				options: {
-					limit: 10000,
-					mimetype: 'application/octet-stream',
-					name: '[name].[ext]'
-				}
-			}]
-		}, {
-			test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-			use: [{
-				loader: 'url-loader',
-				options: {
-					limit: 10000,
-					mimetype: 'image/svg+xml',
-					name: '[name].[ext]'
-				}
-			}]
-		}, {
-			test: /\.(jpe?g|png|gif|ico)$/i,
-			use: [{
-				loader: 'file-loader',
-				options: {
-					name: '[name].[ext]'
-				}
-			}]
-		}, {
-			test: /(\.css|\.less)$/,
-			use: [
-				MiniCssExtractPlugin.loader,
-				'css-loader',
-				{
-					loader: 'postcss-loader',
-					options: {
-						plugins: () => [
-							require('autoprefixer')
-						],
+		rules: [
+			{
+				test: /\.jsx?$/,
+				exclude: /node_modules/,
+				use: ['babel-loader']
+			},
+			{
+				test: /\.eot(\?v=\d+.\d+.\d+)?$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							name: '[name].[ext]'
+						}
 					}
-				},
-				{
-					loader: 'less-loader'
-				}
-			]
-		}]
+				]
+			},
+			{
+				test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 10000,
+							mimetype: 'application/font-woff',
+							name: '[name].[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 10000,
+							mimetype: 'application/octet-stream',
+							name: '[name].[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 10000,
+							mimetype: 'image/svg+xml',
+							name: '[name].[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.(jpe?g|png|gif|ico)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /(\.css|\.less)$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: () => [require('autoprefixer')]
+						}
+					},
+					{
+						loader: 'less-loader'
+					}
+				]
+			}
+		]
 	}
 }
