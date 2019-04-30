@@ -68,7 +68,8 @@ function ajaxCreateCharacter() {
                     money: 5,
                     spirit: 5,
                     stamina: 5,
-                    strength: 5
+                    strength: 5,
+                    freeAttributes: 0
                 }
 
                 return createCharacter(model, transaction)
